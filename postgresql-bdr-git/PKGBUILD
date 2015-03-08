@@ -5,7 +5,7 @@
 
 pkgname=postgresql-bdr-git
 pkgver=20150308
-pkgrel=1
+pkgrel=4
 _majorver=9.4
 pkgdesc="Beta version of the PostgreSQL database with BDR patches"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ url="http://www.postgresql.org/developer/alpha"
 license=('custom:PostgreSQL')
 backup=('etc/conf.d/postgresql' 'etc/pam.d/postgresql' 'etc/logrotate.d/postgresql')
 options=(!strip) # to facilitate debugging of testing builds
-depends=('libxml2' 'readline>=6.0' 'openssl>=1.0.0')
-makedepends=('python2' 'perl')
+depends=('libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'glibc>=2.21')
+makedepends=('python2' 'perl' 'git')
 optdepends=('python2: for PL/Python support'
             'perl: for PL/Perl support')
 conflicts=('postgresql-libs' 'postgresql' 'postgresql-testing' 'postgresql-git')
