@@ -65,13 +65,13 @@ build() {
   #--with-tcl \
 
   make
-  make -C contrib
 }
 
 package() {
   cd "$srcdir/$_gitname-build"
 
   # install
+  make -C contrib DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" install
   make -C contrib DESTDIR="${pkgdir}" install
 
