@@ -5,7 +5,7 @@
 
 pkgname=postgresql-bdr-git
 pkgver=20150308
-pkgrel=4
+pkgrel=7
 _majorver=9.4
 pkgdesc="Beta version of the PostgreSQL database with BDR patches"
 arch=('i686' 'x86_64')
