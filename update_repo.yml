@@ -1,0 +1,24 @@
+---
+
+- hosts: all
+
+  vars:
+    pacmanrepo_source: .
+    pacmanrepo_name: yourlabs
+    pacmanrepo_destination: /home/arch/mirror/yourlabs
+    force_rebuild_db: false
+
+  roles:
+  - role: jpic.pacmanrepo
+    pacmanrepo_architecture: any
+
+  - role: jpic.pacmanrepo
+    pacmanrepo_architecture: x86_64
+
+  - role: jpic.pacmanrepo
+    pacmanrepo_architecture: i686
+
+  post_tasks:
+  - shell: repo-add --verify --sign {{ pacmanrepo_destination }}/os/{{ item }}/{{ pacmanrepo_name }}.db.tar.gz {{ pacmanrepo_destination }}/os/{{ item }}/*.pkg.*
+    with_items: pacmanrepo_architectures
+    when: force_rebuild_db
